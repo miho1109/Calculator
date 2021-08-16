@@ -51,7 +51,7 @@ struct BottomHalfView: View {
 }
 
 //MARK: - PREVIEW
-struct BottonHalfView_Previews: PreviewProvider {
+struct BottomHalfView_Previews: PreviewProvider {
   static var previews: some View {
     BottomHalfView(viewModel: CalculatorViewModel())
   }

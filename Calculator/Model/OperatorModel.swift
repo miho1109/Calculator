@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct Operator: Hashable {
+  let name: String
+  let bgColor: String
+  let textColor: String
+}

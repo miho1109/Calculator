@@ -8,13 +8,29 @@
 import SwiftUI
 
 struct TopHalfView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+  //MARK: - PROPERTIES
+  @ObservedObject var viewModel: CalculatorViewModel
+  
+  //MARK: - BODY
+  var body: some View {
+    VStack {
+      Text(viewModel.result ?? "")
+        .padding()
+        .font(.title)
+      
+      Text(toString(viewModel.calExpression))
+        .padding(10)
+        .font(.title2)
+    } //: VSTACK
+    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .bottomTrailing)
+    .background(Color(UIColor.white))
+    .foregroundColor(.black)
+  }
 }
 
+//MARK: - PREVIEW
 struct TopHalfView_Previews: PreviewProvider {
-    static var previews: some View {
-        TopHalfView()
-    }
+  static var previews: some View {
+    TopHalfView(viewModel: CalculatorViewModel())
+  }
 }
