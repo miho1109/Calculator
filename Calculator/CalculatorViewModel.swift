@@ -19,6 +19,7 @@ class CalculatorViewModel: ObservableObject {
     calExpression = [""]
   }
   
+  // Clean empty element in calExpression
   func cleanNil() {
     for (index, value) in calExpression.enumerated() {
       if value == "" {
@@ -27,11 +28,13 @@ class CalculatorViewModel: ObservableObject {
     }
   }
   
+  // Handle the input
   func handleInput(input: String) {
     // remove first blank space
     cleanNil()
  
     if isOperator(input) {
+      // Append operators into calExpression
       if calExpression.count > 0 {
         switch input {
         case "=":
@@ -52,10 +55,12 @@ class CalculatorViewModel: ObservableObject {
         }
       }
     } else {
+      // Append numbers into calExpression
       inputedNumber.append(input)
       if calExpression.count == 0 {
         calExpression.append(inputedNumber)
       } else {
+        // Append number not at index = 0
         if !isOperator(calExpression[calExpression.count-1]) {
           calExpression.remove(at: calExpression.count-1)
         }
@@ -74,22 +79,27 @@ class CalculatorViewModel: ObservableObject {
 
   }
   
+  // Clear all "C"
   func clearAll() {
     calExpression = [""]
     inputedNumber = ""
   }
   
+  // Remove last "ᐸ"
   func deleteLast() {
     let i = calExpression.count-1
     if isOperator(calExpression[i]) {
+      // Remove element i if is operator
       calExpression.remove(at: i)
     } else {
+      // Remove last char of element i if is number
       calExpression[i] = calExpression[i].substring(to: calExpression[i].index(before: calExpression[i].endIndex))
       inputedNumber = calExpression[i]
       cleanNil()
     }
   }
   
+  // Make percentage "%"
   func addPercentage() {
     let i = calExpression.count-1
     if !isOperator(calExpression[i]) {
@@ -98,6 +108,7 @@ class CalculatorViewModel: ObservableObject {
     }
   }
   
+  // Switch between + & - "+/-"
   func makeNegative() {
     let i = calExpression.count-1
     if !isOperator(calExpression[i]) {
@@ -106,8 +117,10 @@ class CalculatorViewModel: ObservableObject {
     }
   }
   
+  // Calculate result
   func calculate() {
     if calExpression.count < 3 {
+      // Dont calculate if calExpression has < 3 element. Eg: [99][x]
       result = inputedNumber
     } else {
     var a = Double(calExpression[0])
@@ -129,7 +142,9 @@ class CalculatorViewModel: ObservableObject {
           print("Skip")
         }
       }
+      // Set the result
       result = String(a!)
+      // Clear the calExpression & inputedNumber
       calExpression = [""]
       inputedNumber = ""
       calExpression.append(result!)
