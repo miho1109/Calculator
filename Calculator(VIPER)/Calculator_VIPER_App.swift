@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct Calculator_VIPER_App: App {
+  @StateObject var model = DataModel()
+  
     var body: some Scene {
         WindowGroup {
-            ContentView()
+          ContentView(presenter:
+            CalculatorPresenter(interactor:
+              CalculatorInteractor(model: model)))
         }
     }
 }
