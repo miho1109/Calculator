@@ -8,6 +8,9 @@
 import Foundation
 
 class DataModel: ObservableObject, Identifiable{
+  			
+  static let shared = DataModel()
+  
   @Published var operatorLayout: [Row]
 
   init() {

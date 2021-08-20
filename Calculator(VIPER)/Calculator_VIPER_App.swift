@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct Calculator_VIPER_App: App {
-  @StateObject var model = DataModel()
+  @StateObject var model = DataModel.shared
   
     var body: some Scene {
         WindowGroup {

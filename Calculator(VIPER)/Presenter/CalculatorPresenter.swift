@@ -11,7 +11,7 @@ import Combine
 class CalculatorPresenter: ObservableObject {
   let interactor: CalculatorInteractor
   
-  @Published var operatorLayout: [Row]
+  @Published var operatorLayout: [Row] = []
   	
   init(interactor: CalculatorInteractor) {
     self.interactor = interactor
@@ -19,13 +19,13 @@ class CalculatorPresenter: ObservableObject {
     inputedNumber = ""
     calExpression = [""]
     
-    operatorLayout = interactor.model.operatorLayout
+//    operatorLayout = interactor.model.operatorLayout
     
 //    interactor.model.$operatorLayout
 //      .assign(to: self.operatorLayout)
     
-//    interactor.model.$operatorLayout
-//      .assign(to: \.operatorLayout, on: self)
+    interactor.model.$operatorLayout
+      .assign(to: \.operatorLayout, on: self)
     
   }
   
@@ -169,7 +169,7 @@ class CalculatorPresenter: ObservableObject {
       // Clear the calExpression & inputedNumber
       calExpression = [""]
       inputedNumber = ""
-      calExpression.append(result!)
+//      calExpression.append(result!)
       cleanNil()
     }
   }

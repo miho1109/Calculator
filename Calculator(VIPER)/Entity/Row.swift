@@ -4,9 +4,6 @@
 //
 //  Created by Admin on 18/08/2564 BE.
 //
-
-import Foundation
-
 class Row: Identifiable, Codable {
   let id: Int
   let content: [Operator]
@@ -16,3 +13,5 @@ class Row: Identifiable, Codable {
     self.content = content
   }
 }
+
+

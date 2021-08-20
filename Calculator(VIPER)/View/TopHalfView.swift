@@ -14,13 +14,20 @@ struct TopHalfView: View {
   //MARK: - BODY
   var body: some View {
     VStack {
-      Text(presenter.result ?? "")
-        .padding()
-        .font(.title)
+      HStack(alignment: .lastTextBaseline, spacing: 5, content: {
+        Text(presenter.result ?? "")
+          .padding()
+          .font(.largeTitle)
+      }) //: HSTACK
+      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
       
-      Text(toString(presenter.calExpression))
-        .padding(10)
-        .font(.title2)
+      HStack(alignment: .lastTextBaseline, spacing: 5, content: {
+        Text(toString(presenter.calExpression))
+          .padding(10)
+          .font(.title)
+      }) //: HSTACK
+      .frame(maxWidth: .infinity, maxHeight: 50, alignment: .bottomTrailing)
+      
     } //: VSTACK
     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .bottomTrailing)
     .background(Color(UIColor.white))
