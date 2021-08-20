@@ -29,6 +29,7 @@ struct BottomHalfView: View {
                     .font(.title)
                     .fontWeight(.medium)
                     .foregroundColor(Color(item.textColor))
+                    .frame(width: 90, height: 90, alignment: .center)
                 })
                 .frame(width: 90, height: 90, alignment: .center)//: BUTTON
                 .background(
